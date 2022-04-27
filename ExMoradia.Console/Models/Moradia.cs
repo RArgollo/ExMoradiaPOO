@@ -9,12 +9,22 @@ namespace ExMoradiaPOO
         protected int QuantidadeQuartos { get; set; }
         protected List<Morador> Moradores { get; set; }
 
+        public Moradia(string endereco, int cep, double tamanhoEmMetros, int quantidadeDeBanheiros, int quantidadeDeQuartos)
+        {
+            Endereco = endereco;
+            CEP = cep;
+            TamanhoEmMetros = tamanhoEmMetros;
+            QuantidadeBanheiros = quantidadeDeBanheiros;
+            QuantidadeQuartos = quantidadeDeQuartos;
+            Moradores = new List<Morador>();
+        }
+
         public void SetEndereco(string endereco)
         {
             Endereco = endereco;
         }
 
-         public string GetEndereco()
+        public string GetEndereco()
         {
             return Endereco;
         }
@@ -24,7 +34,7 @@ namespace ExMoradiaPOO
             CEP = cep;
         }
 
-         public int GetCEP()
+        public int GetCEP()
         {
             return CEP;
         }
@@ -34,7 +44,7 @@ namespace ExMoradiaPOO
             TamanhoEmMetros = tamanhoEmMetros;
         }
 
-         public double GetTamanhoEmMetros()
+        public double GetTamanhoEmMetros()
         {
             return TamanhoEmMetros;
         }
@@ -44,7 +54,7 @@ namespace ExMoradiaPOO
             QuantidadeBanheiros = quantidadeBanheiros;
         }
 
-         public int GetQuantidadeBanheiros()
+        public int GetQuantidadeBanheiros()
         {
             return QuantidadeBanheiros;
         }
@@ -54,20 +64,31 @@ namespace ExMoradiaPOO
             QuantidadeQuartos = quantidadeQuartos;
         }
 
-          public int GetQuantidadeQuartos()
+        public int GetQuantidadeQuartos()
         {
             return QuantidadeQuartos;
         }
 
-        public virtual double CalcularValorAluguel()
+        public virtual void CalcularValorAluguel()
         {
             var valorAluguel = 0;
-            return valorAluguel;
         }
 
         public void AdicionarMorador(Morador morador)
         {
-
+            Console.WriteLine("Digite o nome do Morador");
+            var nome = Console.ReadLine();
+            Console.WriteLine("Digite o cpf do Morador (só numeros)");
+            string cpf = Console.ReadLine();
+            Console.WriteLine("Digite a data de nascimento do Morador (com /)");
+            var dataNascimento = Console.ReadLine();
+            var continuar = "0";
+            do
+            {
+                Moradores.Add(new Morador(nome, cpf, dataNascimento));
+                Console.WriteLine("Deseja adicionar mais moradores? 1-sim , 2-nao");
+                continuar = Console.ReadLine();
+            }while(continuar=="1");
         }
 
         public void RemoverMorador(string cpf)

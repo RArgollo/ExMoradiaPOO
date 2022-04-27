@@ -6,6 +6,13 @@ namespace ExMoradiaPOO
         private string CPF { get; set; }
         private DateTime DataNascimento { get; set; }
 
+        public Morador(string nome, string cpf, string dataNascimento)
+        {
+            Nome = nome;
+            CPF = cpf; 
+            DataNascimento = DateTime.Parse(dataNascimento);
+        }
+
         public void SetNome(string nome)
         {
             Nome = nome;
