@@ -8,9 +8,9 @@ namespace ExMoradiaPOO
 
         public Morador(string nome, string cpf, string dataNascimento)
         {
-            Nome = nome;
-            CPF = cpf; 
-            DataNascimento = DateTime.Parse(dataNascimento);
+            SetNome(nome);
+            SetCPF(cpf);
+            SetDataNascimento(dataNascimento);
         }
 
         public void SetNome(string nome)
@@ -25,20 +25,24 @@ namespace ExMoradiaPOO
 
         public void SetCPF(string cpf)
         {
-            CPF = cpf;
+            if (cpf.Length == 11)
+            {
+                CPF = cpf;
+            } else
+            CPF = "";
         }
 
-         public string GetCPF()
+        public string GetCPF()
         {
             return CPF;
         }
 
-         public void SetDataNascimento(string dataNascimento)
+        public void SetDataNascimento(string dataNascimento)
         {
             DataNascimento = DateTime.Parse(dataNascimento);
         }
 
-         public DateTime GetDataNascimento()
+        public DateTime GetDataNascimento()
         {
             return DataNascimento;
         }
