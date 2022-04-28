@@ -4,21 +4,37 @@ namespace ExMoradiaPOO
     {
         private bool ComQuintal { get; set; }
 
-        public Casa(string endereco, int cep, double tamanhoEmMetros, int quantidadeDeBanheiros, int quantidadeDeQuartos, bool comQuintal) : base(endereco, cep, tamanhoEmMetros, quantidadeDeBanheiros, quantidadeDeQuartos)
+        public Casa(string endereco, string cep, double tamanhoEmMetros, int quantidadeDeBanheiros, int quantidadeDeQuartos, bool comQuintal) : base(endereco, cep, tamanhoEmMetros, quantidadeDeBanheiros, quantidadeDeQuartos)
         {
-            Endereco = endereco;
-            CEP = cep;
-            TamanhoEmMetros = tamanhoEmMetros;
-            QuantidadeBanheiros = quantidadeDeBanheiros;
-            QuantidadeQuartos = quantidadeDeQuartos;
-            ComQuintal = comQuintal;
+            SetEndereco(endereco);
+            SetCEP(cep);
+            SetTamanhoEmMetros(tamanhoEmMetros);
+            SetQuantidadeBanheiros(quantidadeDeBanheiros);
+            SetQuantidadeQuartos(quantidadeDeQuartos);
+            SetComQuintal(comQuintal);
         }
 
-        public bool GetComQuntal()
+        public override void SetQuantidadeBanheiros(int quantidadeBanheiros)
+        {
+            if (quantidadeBanheiros <= 5)
+            {
+                QuantidadeBanheiros = quantidadeBanheiros;
+            }
+        }
+
+        public override void SetTamanhoEmMetros(double tamanhoEmMetros)
+        {
+            if (tamanhoEmMetros <= 100)
+            {
+                TamanhoEmMetros = tamanhoEmMetros;
+            }
+        }
+
+        public bool GetComQuintal()
         {
             return ComQuintal;
         }
-        public void SetComQuntal(bool comQuintal)
+        public void SetComQuintal(bool comQuintal)
         {
             ComQuintal = comQuintal;
         }

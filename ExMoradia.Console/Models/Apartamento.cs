@@ -5,15 +5,32 @@ namespace ExMoradiaPOO
         private int Andar { get; set; }
         private double ValorCondominio { get; set; }
 
-        public Apartamento(string endereco, int cep, double tamanhoEmMetros, int quantidadeDeBanheiros, int quantidadeDeQuartos, int andar, double valorCondominio) : base(endereco, cep, tamanhoEmMetros, quantidadeDeBanheiros, quantidadeDeQuartos)
+        public Apartamento(string endereco, string cep, double tamanhoEmMetros, int quantidadeDeBanheiros, int quantidadeDeQuartos, int andar, double valorCondominio) : base(endereco, cep, tamanhoEmMetros, quantidadeDeBanheiros, quantidadeDeQuartos)
         {
-            Endereco = endereco;
-            CEP = cep;
-            TamanhoEmMetros = tamanhoEmMetros;
-            QuantidadeBanheiros = quantidadeDeBanheiros;
-            QuantidadeQuartos = quantidadeDeQuartos;
-            Andar = andar;
-            ValorCondominio = valorCondominio;
+            SetEndereco(endereco);
+            SetCEP(cep);
+            SetTamanhoEmMetros(tamanhoEmMetros);
+            SetQuantidadeBanheiros(quantidadeDeBanheiros);
+            SetQuantidadeQuartos(quantidadeDeQuartos);
+            SetAndar(andar);
+            SetValorCondominio(valorCondominio);
+        }
+
+        public override void SetQuantidadeBanheiros(int quantidadeBanheiros)
+        {
+            if (quantidadeBanheiros <= 3)
+            {
+                QuantidadeBanheiros = quantidadeBanheiros;
+            }
+        }
+
+        public override void SetTamanhoEmMetros(double tamanhoEmMetros)
+        {
+            if (tamanhoEmMetros <= 60)
+            {
+                TamanhoEmMetros = tamanhoEmMetros;
+            }
+
         }
 
         public int GetAndar()
@@ -23,7 +40,10 @@ namespace ExMoradiaPOO
 
         public void SetAndar(int andar)
         {
-            Andar = andar;
+            if (andar <= 10)
+            {
+                Andar = andar;
+            }
         }
 
         public double GetValorCondominio()

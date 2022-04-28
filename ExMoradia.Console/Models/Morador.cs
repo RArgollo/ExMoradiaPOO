@@ -39,7 +39,10 @@ namespace ExMoradiaPOO
 
         public void SetDataNascimento(string dataNascimento)
         {
+            if(DateTime.Parse(dataNascimento)<DateTime.Now)
+            {
             DataNascimento = DateTime.Parse(dataNascimento);
+            }
         }
 
         public DateTime GetDataNascimento()

@@ -31,6 +31,14 @@ public class MoradorTestes
         var dataNascimento = morador.GetDataNascimento();
         Assert.Equal(dataNascimentoEsperada, dataNascimento.ToString("dd/MM/yyyy"));
     }
+    [Fact]
+      public void DataNascimentoMoradorDeveSerValida()
+    {
+        var dataNascimentoInvalida = "19/11/2025";
+        var morador = new Morador("Rafael", "11122233345", dataNascimentoInvalida);
+        var dataNascimento = morador.GetDataNascimento();
+        Assert.Equal(System.DateTime.MinValue, dataNascimento);
+    }
 
     [Fact]
     public void CPFMoradorNaoDeveSalvarQuandoInvalido()

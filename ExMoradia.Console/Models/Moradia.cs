@@ -3,19 +3,19 @@ namespace ExMoradiaPOO
     public class Moradia
     {
         protected string Endereco { get; set; }
-        protected int CEP { get; set; }
+        protected string CEP { get; set; }
         protected double TamanhoEmMetros { get; set; }
         protected int QuantidadeBanheiros { get; set; }
         protected int QuantidadeQuartos { get; set; }
         protected List<Morador> Moradores { get; set; }
 
-        public Moradia(string endereco, int cep, double tamanhoEmMetros, int quantidadeDeBanheiros, int quantidadeDeQuartos)
+        public Moradia(string endereco, string cep, double tamanhoEmMetros, int quantidadeDeBanheiros, int quantidadeDeQuartos)
         {
-            Endereco = endereco;
-            CEP = cep;
-            TamanhoEmMetros = tamanhoEmMetros;
-            QuantidadeBanheiros = quantidadeDeBanheiros;
-            QuantidadeQuartos = quantidadeDeQuartos;
+            SetEndereco(endereco);
+            SetCEP(cep);
+            SetTamanhoEmMetros(tamanhoEmMetros);
+            SetQuantidadeBanheiros(quantidadeDeBanheiros);
+            SetQuantidadeQuartos(quantidadeDeQuartos);
             Moradores = new List<Morador>();
         }
 
@@ -29,17 +29,22 @@ namespace ExMoradiaPOO
             return Endereco;
         }
 
-        public void SetCEP(int cep)
+        public void SetCEP(string cep)
         {
-            CEP = cep;
+            if (cep.Length == 8)
+            {
+                CEP = cep;
+            }
+            else CEP = "";
+
         }
 
-        public int GetCEP()
+        public string GetCEP()
         {
             return CEP;
         }
 
-        public void SetTamanhoEmMetros(double tamanhoEmMetros)
+        public virtual void SetTamanhoEmMetros(double tamanhoEmMetros)
         {
             TamanhoEmMetros = tamanhoEmMetros;
         }
@@ -49,7 +54,7 @@ namespace ExMoradiaPOO
             return TamanhoEmMetros;
         }
 
-        public void SetQuantidadeBanheiros(int quantidadeBanheiros)
+        public virtual void SetQuantidadeBanheiros(int quantidadeBanheiros)
         {
             QuantidadeBanheiros = quantidadeBanheiros;
         }
@@ -88,7 +93,7 @@ namespace ExMoradiaPOO
                 Moradores.Add(new Morador(nome, cpf, dataNascimento));
                 Console.WriteLine("Deseja adicionar mais moradores? 1-sim , 2-nao");
                 continuar = Console.ReadLine();
-            }while(continuar=="1");
+            } while (continuar == "1");
         }
 
         public void RemoverMorador(string cpf)
